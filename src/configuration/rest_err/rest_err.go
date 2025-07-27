@@ -3,20 +3,20 @@ package rest_err
 import "net/http"
 
 type RestErr struct {
-	Message string `json:"message"`
-	Err     string `json:"error"`
-	Code    int    `json:"code"`
+	Message string   `json:"message"`
+	Err     string   `json:"error"`
+	Code    int      `json:"code"`
 	Causes  []Causes `json:"causes"`
 }
 
 type Causes struct {
-	Field  string `json:"field"`
+	Field   string `json:"field"`
 	Message string `json:"message"`
 }
 
 func (r *RestErr) Error() string {
 	return r.Message
-}	
+}
 
 func NewRestErr(message string, err string, code int, causes []Causes) *RestErr {
 	return &RestErr{
@@ -58,7 +58,7 @@ func NewNotFoundError(message string, causes []Causes) *RestErr {
 		Err:     "not_found",
 		Code:    http.StatusNotFound,
 	}
-}	
+}
 
 func NewForbiddenError(message string, causes []Causes) *RestErr {
 	return &RestErr{
