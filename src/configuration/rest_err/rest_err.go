@@ -40,10 +40,11 @@ func NewBadRequestValidationError(message string, causes []Causes) *RestErr {
 		Message: message,
 		Err:     "bad_request",
 		Code:    http.StatusBadRequest,
+		Causes:  causes,
 	}
 }
 
-func NewInternalServerError(message string, causes []Causes) *RestErr {
+func NewInternalServerError(message string) *RestErr {
 	return &RestErr{
 		Message: message,
 		Err:     "internal_server_error",
@@ -51,7 +52,7 @@ func NewInternalServerError(message string, causes []Causes) *RestErr {
 	}
 }
 
-func NewNotFoundError(message string, causes []Causes) *RestErr {
+func NewNotFoundError(message string) *RestErr {
 	return &RestErr{
 		Message: message,
 		Err:     "not_found",
@@ -59,7 +60,7 @@ func NewNotFoundError(message string, causes []Causes) *RestErr {
 	}
 }
 
-func NewForbiddenError(message string, causes []Causes) *RestErr {
+func NewForbiddenError(message string) *RestErr {
 	return &RestErr{
 		Message: message,
 		Err:     "forbidden",
